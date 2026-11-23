@@ -1,103 +1,119 @@
-# Langchain-chains
-LangChain Chains
+# LangChain Chains
 
-A collection of small, runnable examples that show how to build chains with LangChain.
+A collection of small, runnable examples showing how to build chains with
+LangChain. Each example is designed to stand on its own so you can read one
+file, run it, and understand how the chain is assembled.
 
-This repository is a starting point. Examples will be added over time. Each example is meant to stand on its own so you can read one file, run it, and see how that chain is put together.
+## Planned topics
 
-What this repo will cover
+- A basic prompt → model → parser chain
+- Sequential chains, where one step feeds the next
+- Parallel chains that run several steps on the same input
+- Routing an input to different prompts
+- Retrieval chains that answer questions from a small document set
+- Conversation chains that retain prior turns
+- Structured output, where the model returns a validated object
 
-Chains connect steps such as a prompt, a chat model, and an output parser. Upcoming examples will use LangChain Expression Language (LCEL), where those steps are joined with |.
+## Prerequisites
 
-Planned topics:
+Before setting up the project, install:
 
+- [Git](https://git-scm.com/downloads)
+- [Python 3.10 or newer](https://www.python.org/downloads/)
+- An API key for the model provider used by the examples
 
+Verify your Git and Python installations:
 
+```bash
+git --version
+python --version
+```
 
+On some macOS and Linux systems, use `python3` and `pip3` instead of `python`
+and `pip`.
 
-A basic prompt → model → parser chain
+## Local setup
 
+1. Clone the repository and enter the project directory:
 
+   ```bash
+   git clone https://github.com/BhanuRajpoot/Langchain-chains.git
+   cd Langchain-chains
+   ```
 
-Sequential chains, where one step feeds the next
+2. Create a virtual environment:
 
+   ```bash
+   python -m venv .venv
+   ```
 
+3. Activate the virtual environment.
 
-Parallel chains that run several steps on the same input
+   **Windows (PowerShell):**
 
+   ```powershell
+   .\.venv\Scripts\Activate.ps1
+   ```
 
+   **Windows (Command Prompt):**
 
-Routing an input to different prompts
+   ```bat
+   .venv\Scripts\activate.bat
+   ```
 
+   **macOS/Linux:**
 
+   ```bash
+   source .venv/bin/activate
+   ```
 
-Retrieval chains that answer from a small document set
+4. Install dependencies after `requirements.txt` has been added:
 
+   ```bash
+   python -m pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
 
+5. After `.env.example` has been added, create your local environment file:
 
-Conversation chains that keep prior turns
+   **Windows (PowerShell):**
 
+   ```powershell
+   Copy-Item .env.example .env
+   ```
 
+   **macOS/Linux:**
 
-Structured output, where the model returns a validated object
+   ```bash
+   cp .env.example .env
+   ```
 
-Requirements
+   Open `.env` and add the required API key. The `.env` file is ignored by
+   Git and must never be committed.
 
-When examples are added, you will need:
+## Running an example
 
+From the repository root, with the virtual environment active, run:
 
-
-
-
-Python 3.10 or newer
-
-
-
-A virtual environment
-
-
-
-An API key for the chat model provider used by the examples
-
-Setup
-
-These steps will apply once example code and a requirements.txt are in the repo.
-
-python -m venv .venv
-
-# Windows
-.venv\Scripts\activate
-
-# macOS / Linux
-source .venv/bin/activate
-
-pip install -r requirements.txt
-
-Copy the environment template and add your key locally:
-
-# Windows
-copy .env.example .env
-
-# macOS / Linux
-cp .env.example .env
-
-.env should stay out of version control. Do not commit API keys.
-
-Running an example
-
-From the repository root, with the virtual environment active:
-
+```bash
 python examples/<example_name>.py
+```
 
-Each example will load its own settings, call the model, and print the result.
+Each example will load its settings, call the configured model, and print the
+result.
 
-Project layout
+## Project status
 
-The layout will grow with the examples. The expected shape is:
+This repository is currently a starter project. Example scripts,
+`requirements.txt`, and `.env.example` will be added as the project grows.
 
+The planned project structure is:
+
+```text
 .
-├── examples/          # one chain per file
-├── .env.example       # variable names only, no secrets
+├── examples/          # One chain example per file
+├── .env.example       # Environment variable names only
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+```
